@@ -1,0 +1,54 @@
+1:  Install jython
+2:  install Django,django-jython, built new project. edit database to doj at setting.py
+3:  startapp chores.
+4:  add chorelists and chore at models.py
+5:  add chores to project at setting.py
+5:  integrate git with pycharm
+6:  jython manage.py makemigrations chores
+7:  jython manage.py sqlmigrate chores 0001----see sql script that makemigration make
+8:  jython manage.py migrate----run sql script aforesaid
+9:  add a new field in chore in models.py --- complete
+10:
+    makemigrations for new added field:
+    jython manage.py makemigrations chores
+11: jython manage.py migrate----run sql script aforesaid
+
+    change a model:
+12:     change chore.complete field True to False:
+   1-change it in models.py
+   2-change it in database, or in shell, or run makemigrattions,migrate again
+     in the way of shell:
+     jython manage.py shell
+     >>> from  chores.models import ChoreList, Chore
+     >>> ChoreList.objects.all()
+     []
+     >>> from django.utils import timezone
+     >>> list= ChoreList(name="Monday list", due_date=timezone.now())
+     >>> list.name
+     'Monday list'
+     >>> list.due_date
+     datetime.datetime(2015, 10, 17, 19, 17, 40, 722000, tzinfo=<UTC>)
+     >>> list.save()
+13: let data field have a return string for view in shell, quit and restart jython shell.
+    {python shell is very important.}
+
+14: add superuser:jython manage.py createsuperuser   Admin greybox
+15: import the models into admin: admin.site.register(ChoreList)
+16: In home imac, the postgresql is on python3, not python2.
+    jython on home imac is error: unicode or tzinfo, or database.
+    And fail in jython database driver for: postgresql, mysql.
+17: now, only python and python3 work well for this project.(I will try jython-django on unbuntu after master the grail
+    and spring,jhiperster)
+18; add some fileds in admin.py.
+    Regroup the admin field: (None,{'fields':['name']}),
+19: class collapse  'classes':['collapse']
+20: Add another model in admin
+21: Put the new add model in its parent in admin   --- StackedInline , inlines
+22: StackedInline to tabulaInline (So beautiful a little move).
+23: Build a only-a-line-text page and build a url.py in chores:
+    url(r'^$',  views.index, name='index')
+    link this page. And then link url.py in Chorelist to
+    url.py in chores:
+    url(r'^chores/', include('chores.urls')),
+
+

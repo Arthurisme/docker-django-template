@@ -1,0 +1,45 @@
+
+
+
+{% if chore %}
+
+<ul>
+
+{#    <li>  <a href="/chores/{{ chorelist.id }}/chores/{{ chore.id }}"> {{ chore}} </a> </li>#}
+
+
+
+</ul>
+
+    <h1> {{ chore }}  </h1>
+
+    <p> Due Date: {{ chore.due_date }} </p>
+
+
+
+    <form action="/chores/{{ chorelist.id }}/chores/{{ chore.id }}/update/" method="post">
+    {% csrf_token %}
+
+    <label form="complete">Is Complete</Label>
+
+    {% if chore.complete %}
+        <input type="checkbox" name="complete" id="complete" checked/>
+    {% else %}
+        <input type="checkbox" name="complete" id="complete"  />
+    {% endif %}
+
+    <br/>
+        <input type="submit" value="Update"/>
+
+
+
+    </form>
+
+{#    <p> Is Complete: {{ chore.complete }} </p>#}
+
+
+{% else %}
+    <p> No chores are currently associated with Chore  #{{ chore.id }} </p>
+{% endif %}
+
+

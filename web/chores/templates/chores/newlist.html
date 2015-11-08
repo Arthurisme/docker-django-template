@@ -1,0 +1,31 @@
+
+
+    <h1>New List</h1>
+
+
+
+
+
+    <form action="/chores/newlist/" method="post">
+    {% csrf_token %}
+
+    <label form="name">List Name</Label>
+
+        <input type="textbox" name="name" id="name" placeholder="Enter a name"/> <br/>
+
+    <label form="duedate">Due Date</Label>
+
+        <input type="datetime-local" name="duedate" id="duedate"  /><br/>
+
+
+        <input type="submit" value="Create"/>
+
+
+
+    </form>
+
+{#    <p> Is Complete: {{ chore.complete }} </p>#}
+
+
+
+

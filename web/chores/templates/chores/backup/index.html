@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block primary %}
+
+{%  if chorelists %}
+
+    {% for chorelist in chorelists %}
+        <li> <a href="/chores/{{ chorelist.id }}/"> {{ chorelist.name }}  </a></li>
+
+    {% endfor %}
+
+
+{%  else  %}
+
+    <p> No chorelist.</p>
+{%  endif %}
+
+
+<a href="/chores/newlist/">Create a new list</a>
+
+{%  endblock %}
+
+
+
